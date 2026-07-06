@@ -79,6 +79,28 @@
     .boom{position:absolute;font-size:42px;filter:drop-shadow(0 5px #000);animation:bop 1.8s infinite ease-in-out;z-index:4}
     .b1{top:-18px;left:10px}.b2{top:-20px;right:18px;animation-delay:.4s}.b3{bottom:8px;left:-6px;animation-delay:.8s}.b4{bottom:5px;right:-8px;animation-delay:1.2s}
     @keyframes bop{50%{transform:scale(1.2) rotate(9deg)}}
+    .anthemWrap{margin:0 0 16px;display:grid;gap:8px;justify-items:center}
+    .anthemBtn{
+      border:4px solid #fff;
+      border-radius:999px;
+      padding:14px 20px;
+      background:linear-gradient(90deg,#ffffff 0 32%,#0057b8 32% 66%,#d52b1e 66% 100%);
+      color:#111;
+      font-family:"Trebuchet MS",system-ui,sans-serif;
+      font-size:clamp(17px,4vw,24px);
+      font-weight:1000;
+      text-shadow:0 1px rgba(255,255,255,.65);
+      box-shadow:0 8px 0 #000,0 14px 20px rgba(0,0,0,.25);
+    }
+    .anthemBtn.playing{filter:saturate(1.8);animation:pulseBtn .8s infinite alternate}
+    @keyframes pulseBtn{to{transform:scale(1.03)}}
+    .anthemStatus{
+      font-family:"Trebuchet MS",system-ui,sans-serif;
+      font-weight:900;
+      font-size:13px;
+      color:#fff7b0;
+      text-shadow:0 2px 0 #000;
+    }
     .photoBox{
       position:relative;
       width:100%;
@@ -168,6 +190,7 @@
     <div class="ticker"><span>УЗБАГОЙСЯ · ПРЕВЕД МЕДВЕД · АФФТАР ЖЖОТ · НИЧОСИ · ЙА КРЕВЕДКО · ОНОТОЛЕ ОДОБРЯЭ · ПАЦТАЛОМ · КОТЭ НЕ ОДОБРЯЭ · УЗБАГОЙСЯ · ПРЕВЕД МЕДВЕД · АФФТАР ЖЖОТ · </span></div>
     <section class="stage">
       <div class="boom b1">💥</div><div class="boom b2">🎆</div><div class="boom b3">🎇</div><div class="boom b4">🔥</div>
+      <div class="anthemWrap"><button class="anthemBtn" id="anthemBtn">🇷🇺 Включить гимн России</button><div class="anthemStatus" id="anthemStatus">На iPhone звук включится после нажатия</div></div>
       <div class="photoBox"><img id="photo" alt="Даша"></div>
       <div class="meme" id="meme"></div>
       <div class="caption" id="caption"></div>
@@ -178,14 +201,14 @@
   </main>
   <script>
     const slides = [
-      {src:'images/dasha-1.jpg?v=20260706-clean-1', meme:'УЗБАГОЙСЯ', caption:'Главный закон старого Рунета: сначала узбагойся, потом листай дальше.'},
-      {src:'images/dasha-2.jpg?v=20260706-clean-1', meme:'ПРЕВЕД МЕДВЕД', caption:'Классика 2010-х: качество вебки есть, атмосфера есть, вопросов нет.'},
-      {src:'images/dasha-3.jpg?v=20260706-clean-1', meme:'АФФТАР ЖЖОТ', caption:'Когда кадр настолько мощный, что комментарии пишутся капсом.'},
-      {src:'images/dasha-4.jpg?v=20260706-clean-1', meme:'НИЧОСИ', caption:'Чипсы как аксессуар. Высокая мода старого интернета.'},
-      {src:'images/dasha-5.jpg?v=20260706-clean-1', meme:'ЙА КРЕВЕДКО', caption:'Снимок, который нельзя объяснить, но можно уважать.'},
-      {src:'images/dasha-6.jpg?v=20260706-clean-1', meme:'ОНОТОЛЕ ОДОБРЯЭ', caption:'Уровень удивления: 9000. Уровень мемности: ещё выше.'},
-      {src:'images/dasha-7.jpg?v=20260706-clean-1', meme:'ПАЦТАЛОМ', caption:'Нижний ракурс судьбы. Старый Рунет аплодирует стоя.'},
-      {src:'images/dasha-8.jpg?v=20260706-clean-1', meme:'КОТЭ НЕ ОДОБРЯЭ', caption:'Боевой режим активирован. Сайт переходит на уровень босса.'}
+      {src:'images/dasha-1.jpg?v=20260706-anthem-1', meme:'УЗБАГОЙСЯ', caption:'Главный закон старого Рунета: сначала узбагойся, потом листай дальше.'},
+      {src:'images/dasha-2.jpg?v=20260706-anthem-1', meme:'ПРЕВЕД МЕДВЕД', caption:'Классика 2010-х: качество вебки есть, атмосфера есть, вопросов нет.'},
+      {src:'images/dasha-3.jpg?v=20260706-anthem-1', meme:'АФФТАР ЖЖОТ', caption:'Когда кадр настолько мощный, что комментарии пишутся капсом.'},
+      {src:'images/dasha-4.jpg?v=20260706-anthem-1', meme:'НИЧОСИ', caption:'Чипсы как аксессуар. Высокая мода старого интернета.'},
+      {src:'images/dasha-5.jpg?v=20260706-anthem-1', meme:'ЙА КРЕВЕДКО', caption:'Снимок, который нельзя объяснить, но можно уважать.'},
+      {src:'images/dasha-6.jpg?v=20260706-anthem-1', meme:'ОНОТОЛЕ ОДОБРЯЭ', caption:'Уровень удивления: 9000. Уровень мемности: ещё выше.'},
+      {src:'images/dasha-7.jpg?v=20260706-anthem-1', meme:'ПАЦТАЛОМ', caption:'Нижний ракурс судьбы. Старый Рунет аплодирует стоя.'},
+      {src:'images/dasha-8.jpg?v=20260706-anthem-1', meme:'КОТЭ НЕ ОДОБРЯЭ', caption:'Боевой режим активирован. Сайт переходит на уровень босса.'}
     ];
     let index = 0;
     const photo = document.getElementById('photo');
@@ -193,6 +216,9 @@
     const caption = document.getElementById('caption');
     const counter = document.getElementById('counter');
     const thumbs = document.getElementById('thumbs');
+    const anthemBtn = document.getElementById('anthemBtn');
+    const anthemStatus = document.getElementById('anthemStatus');
+    let anthemPlaying = false;
 
     function render(){
       const s = slides[index];
@@ -210,6 +236,7 @@
     document.getElementById('prev').onclick = prev;
     thumbs.onclick = e => { const b=e.target.closest('button[data-i]'); if(b){ index=+b.dataset.i; render(); } };
     document.addEventListener('keydown', e => { if(e.key==='ArrowRight')next(); if(e.key==='ArrowLeft')prev(); });
+
     function burst(){
       const colors=['#ff2448','#ffe600','#00df6f','#00d5ff','#fff'];
       const x=innerWidth*(.15+Math.random()*.7), y=innerHeight*(.08+Math.random()*.25);
@@ -221,6 +248,61 @@
         document.body.appendChild(sp); setTimeout(()=>sp.remove(),1400);
       }
     }
+
+    function noteFrequency(note){
+      const map={C:0,Cs:1,D:2,Ds:3,E:4,F:5,Fs:6,G:7,Gs:8,A:9,As:10,B:11};
+      const m=note.match(/^([A-G]s?)(\d)$/); if(!m) return 0;
+      const semitone = map[m[1]] + (Number(m[2]) - 4) * 12 - 9;
+      return 440 * Math.pow(2, semitone / 12);
+    }
+    function playTone(ctx, note, start, dur, gainValue){
+      const freq = noteFrequency(note);
+      if(!freq) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, start);
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(gainValue, start + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(start);
+      osc.stop(start + dur + 0.04);
+    }
+    function playChord(ctx, notes, start, dur){
+      notes.forEach(n=>playTone(ctx,n,start,dur,0.035));
+    }
+    async function playAnthem(){
+      if(anthemPlaying) return;
+      anthemPlaying = true;
+      anthemBtn.classList.add('playing');
+      anthemBtn.textContent = '🇷🇺 Гимн играет';
+      anthemStatus.textContent = 'Синтезатор играет торжественную мелодию прямо в браузере';
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      const ctx = new AudioCtx();
+      await ctx.resume();
+      const melody = [
+        ['G4',.45],['C5',.70],['G4',.35],['A4',.35],['B4',.70],['E5',.70],['D5',.45],['C5',.45],['B4',.45],['A4',.45],['B4',.70],['G4',.80],
+        ['C5',.70],['B4',.35],['A4',.35],['G4',.70],['A4',.70],['B4',.45],['C5',.45],['D5',.70],['E5',.80],
+        ['D5',.45],['C5',.45],['B4',.70],['C5',.70],['D5',.45],['E5',.45],['F5',.75],['E5',.80],['D5',.50],['C5',.95]
+      ];
+      let t = ctx.currentTime + .08;
+      for(const [note,dur] of melody){
+        playTone(ctx,note,t,dur,0.085);
+        if(['C5','E5','G4'].includes(note)) playChord(ctx,['C3','G3'],t,dur*.95);
+        if(['D5','B4','A4'].includes(note)) playChord(ctx,['G3','D4'],t,dur*.95);
+        t += dur * .92;
+      }
+      setTimeout(()=>{
+        ctx.close();
+        anthemPlaying=false;
+        anthemBtn.classList.remove('playing');
+        anthemBtn.textContent='🇷🇺 Включить гимн России';
+        anthemStatus.textContent='Можно нажать ещё раз';
+      }, Math.max(1000,(t-ctx.currentTime+0.6)*1000));
+    }
+    anthemBtn.onclick = playAnthem;
+
     setInterval(()=>document.visibilityState==='visible'&&next(),6000);
     render();
   </script>
