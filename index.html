@@ -1,1 +1,228 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KringDasha</title><style>body{margin:0;background:conic-gradient(#ff003c,#ffd000,#00ff66,#00d5ff,#7a00ff,#ff003c);color:white;font-family:Impact,Arial,sans-serif;text-align:center}h1{font-size:56px;text-shadow:4px 4px #000;margin:28px 8px}.wrap{max-width:720px;margin:auto;padding:16px}.card{background:rgba(0,0,0,.55);border:5px solid #fff;border-radius:28px;padding:16px;box-shadow:0 20px 60px #0008}.photo{position:relative;background:#000;border-radius:22px;overflow:hidden}.photo:before{content:'🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥';position:absolute;left:0;right:0;top:0;font-size:34px;z-index:2;animation:f .55s infinite alternate}@keyframes f{to{transform:translateY(-8px) scale(1.1)}}img{width:100%;max-height:70vh;object-fit:contain;background:#000;display:block}.meme{font-size:34px;color:#ffe600;text-shadow:3px 3px #000;margin:16px}.btn{font-size:18px;font-weight:900;border:0;border-radius:16px;padding:14px 18px;margin:8px;background:#ffe600;box-shadow:0 8px #000}.mar{font-size:28px;white-space:nowrap;overflow:hidden;text-shadow:3px 3px #000}</style></head><body><div class="wrap"><h1>KRING DASHA</h1><div class="mar">УЗБАГОЙСЯ · ПРЕВЕД МЕДВЕД · АФФТАР ЖЖОТ · НИЧОСИ · ЙА КРЕВЕДКО</div><div class="card"><div class="photo"><img id="img"></div><div class="meme" id="meme"></div><button class="btn" onclick="prev()">⬅ назад</button><button class="btn" onclick="next()">вперёд ➡</button></div></div><script>const slides=[['data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDACAWGBwYFCAcGhwkIiAmMFA0MCwsMGJGSjpQdGZ6eHJmcG6AkLicgIiuim5woNqirr7EztDOfJri8uDI8LjKzsb/2wBDASIkJDAqMF40NF7GhHCExsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsb/wAARCACgAEkDASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAAMEAgEFBv/EAC8QAAEEAAQFAwMDBQAAAAAAAAEAAgMRBBIhMRNBUWGRIjJxFCNjBYGSQlJUodH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAAREC/9oADAMBAAIRAxEAPwD59CEIBVYKfDwiTjw8QuHpNDRSoVlweh9XhP8AFScTPBLGBFDkN7qVC1e7ZjM5kCEIWGghCEFJiiJ9LhXcrRgiIGXf5W8oAugV1rATZCDMWGjcSCD5Tfo4eh8pkLQHEBOyoVIcJF/afKRNAxlZQfK9AhTYkbIFR4aNzLIPla+lj6HynRD7YW6QSnDR9D5XPpo+h8qkhcpEYYx2Wzt0TgMrarTquNze3+nktAWSjTcTRZITSEuKwHFTzYpzPR/tEUOKkmcCUMZNMbFgJgwbhrui44x7Q0BMFEJMkTmDUIifWhRDiFyloUQikRgZy/QLQcWnqtFrm7Gl0NIYTV90aBmayBxO/dR4dhxEuY7BMxIzMIGifgWBsQtQVxxhoCZlC42uRW+SKRKwFpUEkWU2F6MjgNFJKQRsRSBERp3ZO0UvtcR3Tc5VZPsDlZ7peY6ij5TaG5B/YJVts0DuilSnSlRhmgtGZS4h2UKrgvcG5XECtaUU93oNgpzX3Hakiw72WXvLvlPZpGQgWXtBtxoJck0brDXApvCDxqFgYRjNggjkbmojcLlFbn+24dDol5u6I9HMCMzdipcws6pwe3KQkyZRqFRLifc0r1sObjaey8jEa0vSwT7gb8KKqk9hKQ2ZoaR0TyQRR2WQxgGwQZgcHE1f7pj9lkBrdlxx0QQ4sXopOGVTi3ajqk5+yCsZGNpvuKzLH6bvVa0bqBQWJHNNVf7qokmNMvmn/p0/pLDuEqQtOgNhJNxEOG4UV7MgLm+l1KcsduZHWuYfEZ2AnmqgWkIpDGuug91Jj35QuucANFJI8vJDduqIRNJnnrkEelIIPETNUFebMdVNiprOVvJOzU0kbqKQkPsjdVHIrLqTCA4Fq4C1zdBR6rrBr3UFGFaDGW8wU25G6DVT4d5ExHVWEopeV7vcaC04BraCC5JleiJXGpqW8wSJHfcsIzHqg9LhiNmUdNVHiRb9E5+LiJ0J26KeSZrtrVGY7DvlbBc40BqVhsjRX/FRFiYWb3fwgZFEAaPuHNON1ySG4uEEkk69kOxcJ2J8Iph+QpMQ7WgtnExdT4U80jXOtuyIzSKXMy5ZQcQhCIEIG6bwPyxfyQKQm8D8sX8kcD8sX8kCkLrhlcRYNcwuIBCEIP/Z','УЗБАГОЙСЯ']];let i=0;function show(){img.src=slides[i][0];meme.textContent=slides[i][1]}function next(){i=(i+1)%slides.length;show()}function prev(){i=(i-1+slides.length)%slides.length;show()}show()</script></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ff3b1f">
+  <title>KringDasha — мем-галерея</title>
+  <style>
+    :root{
+      --red:#ff2448;
+      --orange:#ff7a00;
+      --yellow:#ffe600;
+      --green:#00df6f;
+      --cyan:#00d5ff;
+      --violet:#7a00ff;
+      --ink:#120011;
+      --paper:#fff8d6;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%}
+    body{
+      font-family:Impact,"Arial Black","Trebuchet MS",system-ui,sans-serif;
+      color:#fff;
+      overflow-x:hidden;
+      background:
+        radial-gradient(circle at 10% 12%,rgba(255,230,0,.95) 0 7%,transparent 8%),
+        radial-gradient(circle at 92% 18%,rgba(0,213,255,.9) 0 8%,transparent 9%),
+        radial-gradient(circle at 16% 86%,rgba(0,223,111,.9) 0 9%,transparent 10%),
+        linear-gradient(135deg,#ff4e9b 0%,#ff3b1f 30%,#8116e8 62%,#00a986 100%);
+      background-attachment:fixed;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:repeating-linear-gradient(45deg,rgba(255,255,255,.10) 0 10px,rgba(0,0,0,.08) 10px 20px);
+      opacity:.32;
+      mix-blend-mode:overlay;
+    }
+    .kh{
+      position:fixed;
+      left:0;right:0;height:22px;z-index:20;pointer-events:none;
+      background:linear-gradient(90deg,#120000,#c40017,#ffd000,#120000);
+      box-shadow:0 0 18px rgba(0,0,0,.35);
+    }
+    .kh.top{top:0}.kh.bottom{bottom:0}
+    .kh:before{
+      content:"✹ ❧ ✹ ❧ ✹ ❧ ✹ ❧ ✹ ❧ ✹";
+      position:absolute;inset:0;display:flex;align-items:center;justify-content:space-around;
+      color:#fff1a2;font-size:15px;text-shadow:0 2px #000;
+    }
+    .page{position:relative;z-index:2;max-width:920px;margin:0 auto;padding:42px 16px 70px;text-align:center}
+    h1{
+      margin:8px 0 12px;
+      font-size:clamp(46px,12vw,104px);
+      line-height:.85;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      text-shadow:0 5px 0 #000,0 0 20px rgba(255,230,0,.85);
+    }
+    .ticker{
+      width:100%;overflow:hidden;margin:6px 0 16px;padding:8px 0;
+      font-size:clamp(22px,6vw,40px);
+      text-shadow:0 4px 0 #000;
+      white-space:nowrap;
+    }
+    .ticker span{display:inline-block;animation:move 19s linear infinite}
+    @keyframes move{to{transform:translateX(-50%)}}
+    .stage{
+      position:relative;
+      border:6px solid #fff;
+      border-radius:32px;
+      padding:18px;
+      background:linear-gradient(145deg,rgba(0,0,0,.42),rgba(0,120,70,.55));
+      box-shadow:var(--shadow),inset 0 0 30px rgba(255,255,255,.14);
+    }
+    .boom{position:absolute;font-size:42px;filter:drop-shadow(0 5px #000);animation:bop 1.8s infinite ease-in-out;z-index:4}
+    .b1{top:-18px;left:10px}.b2{top:-20px;right:18px;animation-delay:.4s}.b3{bottom:8px;left:-6px;animation-delay:.8s}.b4{bottom:5px;right:-8px;animation-delay:1.2s}
+    @keyframes bop{50%{transform:scale(1.2) rotate(9deg)}}
+    .photoBox{
+      position:relative;
+      width:100%;
+      height:min(68vh,780px);
+      min-height:430px;
+      overflow:hidden;
+      background:#050505;
+      border-radius:24px;
+      border:4px solid #050505;
+      box-shadow:inset 0 0 0 3px rgba(255,255,255,.05);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .photoBox:before{
+      content:"🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥";
+      position:absolute;left:0;right:0;top:0;z-index:5;
+      font-size:clamp(24px,7vw,42px);
+      line-height:1;
+      filter:drop-shadow(0 3px 0 #000);
+      animation:fire .7s infinite alternate ease-in-out;
+      pointer-events:none;
+    }
+    @keyframes fire{to{transform:translateY(-7px) scale(1.06)}}
+    .photoBox img{
+      display:block;
+      max-width:100%;
+      max-height:100%;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      image-rendering:auto;
+      border-radius:8px;
+    }
+    .meme{
+      margin:18px 0 8px;
+      color:var(--yellow);
+      font-size:clamp(32px,8vw,62px);
+      line-height:.96;
+      text-shadow:0 5px 0 #000,0 0 18px rgba(255,0,60,.75);
+      text-transform:uppercase;
+    }
+    .caption{
+      margin:0 auto 14px;
+      max-width:720px;
+      font-family:"Trebuchet MS",system-ui,sans-serif;
+      font-weight:900;
+      font-size:clamp(14px,3.4vw,18px);
+      color:#fff7b0;
+      text-shadow:0 2px 0 #000;
+    }
+    .controls{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:14px}
+    button{
+      border:0;border-radius:18px;padding:15px 22px;cursor:pointer;
+      background:linear-gradient(180deg,#fff200,#ffcf00);
+      color:#1180db;
+      font-family:"Trebuchet MS",system-ui,sans-serif;
+      font-size:clamp(18px,4.5vw,26px);
+      font-weight:1000;
+      box-shadow:0 8px 0 #000,0 14px 20px rgba(0,0,0,.25);
+    }
+    button:active{transform:translateY(5px);box-shadow:0 3px 0 #000}
+    .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+    .thumb{
+      aspect-ratio:1/1;padding:0;border-radius:14px;overflow:hidden;border:3px solid rgba(255,255,255,.65);
+      background:#000;box-shadow:none;
+    }
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .thumb.active{border-color:var(--yellow);box-shadow:0 0 0 4px var(--red)}
+    .counter{
+      margin-top:12px;
+      font-family:"Trebuchet MS",system-ui,sans-serif;
+      font-weight:900;
+      color:#fff;
+      text-shadow:0 2px 0 #000;
+    }
+    .spark{position:fixed;width:10px;height:10px;border-radius:999px;z-index:1;pointer-events:none;animation:spark 1.4s ease-out forwards}
+    @keyframes spark{to{transform:translate(var(--dx),var(--dy)) scale(.1);opacity:0}}
+    @media(max-width:520px){.page{padding-left:10px;padding-right:10px}.stage{padding:12px;border-width:5px}.photoBox{height:62vh;min-height:390px}.thumbs{grid-template-columns:repeat(4,1fr)}}
+  </style>
+</head>
+<body>
+  <div class="kh top"></div>
+  <div class="kh bottom"></div>
+  <main class="page">
+    <h1>Kring Dasha</h1>
+    <div class="ticker"><span>УЗБАГОЙСЯ · ПРЕВЕД МЕДВЕД · АФФТАР ЖЖОТ · НИЧОСИ · ЙА КРЕВЕДКО · ОНОТОЛЕ ОДОБРЯЭ · ПАЦТАЛОМ · КОТЭ НЕ ОДОБРЯЭ · УЗБАГОЙСЯ · ПРЕВЕД МЕДВЕД · АФФТАР ЖЖОТ · </span></div>
+    <section class="stage">
+      <div class="boom b1">💥</div><div class="boom b2">🎆</div><div class="boom b3">🎇</div><div class="boom b4">🔥</div>
+      <div class="photoBox"><img id="photo" alt="Даша"></div>
+      <div class="meme" id="meme"></div>
+      <div class="caption" id="caption"></div>
+      <div class="controls"><button id="prev">⬅ назад</button><button id="next">вперёд ➡</button></div>
+      <div class="counter" id="counter"></div>
+      <div class="thumbs" id="thumbs"></div>
+    </section>
+  </main>
+  <script>
+    const slides = [
+      {src:'images/dasha-1.jpg?v=20260706-clean-1', meme:'УЗБАГОЙСЯ', caption:'Главный закон старого Рунета: сначала узбагойся, потом листай дальше.'},
+      {src:'images/dasha-2.jpg?v=20260706-clean-1', meme:'ПРЕВЕД МЕДВЕД', caption:'Классика 2010-х: качество вебки есть, атмосфера есть, вопросов нет.'},
+      {src:'images/dasha-3.jpg?v=20260706-clean-1', meme:'АФФТАР ЖЖОТ', caption:'Когда кадр настолько мощный, что комментарии пишутся капсом.'},
+      {src:'images/dasha-4.jpg?v=20260706-clean-1', meme:'НИЧОСИ', caption:'Чипсы как аксессуар. Высокая мода старого интернета.'},
+      {src:'images/dasha-5.jpg?v=20260706-clean-1', meme:'ЙА КРЕВЕДКО', caption:'Снимок, который нельзя объяснить, но можно уважать.'},
+      {src:'images/dasha-6.jpg?v=20260706-clean-1', meme:'ОНОТОЛЕ ОДОБРЯЭ', caption:'Уровень удивления: 9000. Уровень мемности: ещё выше.'},
+      {src:'images/dasha-7.jpg?v=20260706-clean-1', meme:'ПАЦТАЛОМ', caption:'Нижний ракурс судьбы. Старый Рунет аплодирует стоя.'},
+      {src:'images/dasha-8.jpg?v=20260706-clean-1', meme:'КОТЭ НЕ ОДОБРЯЭ', caption:'Боевой режим активирован. Сайт переходит на уровень босса.'}
+    ];
+    let index = 0;
+    const photo = document.getElementById('photo');
+    const meme = document.getElementById('meme');
+    const caption = document.getElementById('caption');
+    const counter = document.getElementById('counter');
+    const thumbs = document.getElementById('thumbs');
+
+    function render(){
+      const s = slides[index];
+      photo.src = s.src;
+      photo.alt = s.meme;
+      meme.textContent = s.meme;
+      caption.textContent = s.caption;
+      counter.textContent = `${index + 1} / ${slides.length}`;
+      thumbs.innerHTML = slides.map((x,i)=>`<button class="thumb ${i===index?'active':''}" data-i="${i}"><img src="${x.src}" alt="${x.meme}"></button>`).join('');
+      burst();
+    }
+    function next(){index=(index+1)%slides.length;render()}
+    function prev(){index=(index-1+slides.length)%slides.length;render()}
+    document.getElementById('next').onclick = next;
+    document.getElementById('prev').onclick = prev;
+    thumbs.onclick = e => { const b=e.target.closest('button[data-i]'); if(b){ index=+b.dataset.i; render(); } };
+    document.addEventListener('keydown', e => { if(e.key==='ArrowRight')next(); if(e.key==='ArrowLeft')prev(); });
+    function burst(){
+      const colors=['#ff2448','#ffe600','#00df6f','#00d5ff','#fff'];
+      const x=innerWidth*(.15+Math.random()*.7), y=innerHeight*(.08+Math.random()*.25);
+      for(let n=0;n<18;n++){
+        const sp=document.createElement('i');
+        sp.className='spark'; sp.style.left=x+'px'; sp.style.top=y+'px'; sp.style.background=colors[Math.floor(Math.random()*colors.length)];
+        const a=Math.random()*Math.PI*2, r=55+Math.random()*120;
+        sp.style.setProperty('--dx', Math.cos(a)*r+'px'); sp.style.setProperty('--dy', Math.sin(a)*r+'px');
+        document.body.appendChild(sp); setTimeout(()=>sp.remove(),1400);
+      }
+    }
+    setInterval(()=>document.visibilityState==='visible'&&next(),6000);
+    render();
+  </script>
+</body>
+</html>
